@@ -2,42 +2,24 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <title>WebAR GPS-based (Sai số 100m) - AR.js</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>WebVR - Xem Ảnh 360 Độ</title>
     
-    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-look-controls.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
   </head>
   <body style="margin: 0px; overflow: hidden;">
     
-    <a-scene 
-      embedded 
-      vr-mode-ui="enabled: false" 
-      arjs="sourceType: webcam; debugUIEnabled: false;">
+    <a-scene vr-mode-ui="enabled: true">
       
       <a-assets>
-        <a-asset-item id="crab-obj" src="./assets/10012_crab_v2_iterations-1.obj"></a-asset-item>
-        <a-asset-item id="crab-mtl" src="./assets/10012_crab_v2_iterations-1.mtl"></a-asset-item>
+        <img id="panorama" src="https://panorama-sample.netlify.app/panoramas/milkyway.jpg" crossorigin="anonymous">
       </a-assets>
       
-      <a-entity 
-        id="ar-object"
-        gps-entity-place="latitude: 10.421014; longitude: 105.643672;"
-        position="0 0 0"
-        scale="1 1 1"> <a-obj-model 
-          src="#crab-obj" 
-          mtl="#crab-mtl"
-          rotation="0 0 0">
-        </a-obj-model>
-        
-      </a-entity>
+      <a-sky src="#panorama" rotation="0 -90 0"></a-sky>
       
-      <a-camera 
-        gps-camera="positionMinAccuracy: 100; gpsMinDistance: 5;" 
-        rotation-reader>
-      </a-camera>
+      <a-camera look-controls="magicWindowTrackingEnabled: true; touchEnabled: true"></a-camera>
       
     </a-scene>
   </body>
 </html>
+
